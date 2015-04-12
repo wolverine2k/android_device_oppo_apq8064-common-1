@@ -41,6 +41,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom lpj=67677 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 zcache
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000
 TARGET_KERNEL_SOURCE := kernel/oppo/n1
+BOARD_CUSTOM_BOOTIMG_MK := device/oppo/apq8064-common/mkbootimg.mk
 
 # Flags
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP -DNO_SECURE_DISCARD
@@ -121,11 +122,12 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
 ifeq ($(WITH_SIMPLE_RECOVERY),true)
     PRODUCT_EXTRA_RECOVERY_KEYS += vendor/extra/recovery_keys/OPPO_N1
-    TARGET_RECOVERY_FSTAB := device/oppo/apq8064-common/recovery.fstab
+    TARGET_RECOVERY_FSTAB := device/oppo/apq8064-common/recovery.fstab.std
 else
-    TARGET_RECOVERY_FSTAB := device/oppo/apq8064-common/rootdir/etc/fstab.qcom
+    TARGET_RECOVERY_FSTAB := device/oppo/apq8064-common/rootdir/etc/fstab.qcom.std
 endif
 
 # SELinux
