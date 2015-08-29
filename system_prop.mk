@@ -15,6 +15,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.no_wait_for_card=1 \
+    persist.radio.oem_socket=false \
     persist.data.netmgrd.qos.enable=true \
     ro.baseband.arch=mdm \
     ro.telephony.call_ring.multiple=false \
