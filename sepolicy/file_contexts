@@ -16,3 +16,7 @@
 
 # Oppo NV
 /data/opponvitems(/.*)?                     u:object_r:opponvitem_file:s0
+
+# Lvm
+/dev/mapper/lvpool.* u:object_r:lvm_device:s0
+/dev/lvpool.* u:object_r:lvm_device:s0
