@@ -9,7 +9,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.composition.type=dyn \
     debug.mdpcomp.maxlayer=3 \
     debug.mdpcomp.logs=0 \
-    persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196608
 
 # GPS
