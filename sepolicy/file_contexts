@@ -17,6 +17,15 @@
 # Oppo NV
 /data/opponvitems(/.*)?                     u:object_r:opponvitem_file:s0
 
+# We have a couple of non-standard NV partitions
+/dev/block/platform/msm_sdcc.1/by-name/oppodycnvbk u:object_r:modem_efs_partition_device:s0
+/dev/block/platform/msm_sdcc.1/by-name/oppostanvbk u:object_r:modem_efs_partition_device:s0
+
+/persist/sns.reg    u:object_r:sensors_persist_file:s0
+
+/dev/block/mmcblk0p1.* u:object_r:modem_block_device:s0
+/dev/block/mmcblk0p2.* u:object_r:modem_block_device:s0
+
 # Lvm
 /dev/mapper/lvpool.* u:object_r:lvm_device:s0
 /dev/lvpool.* u:object_r:lvm_device:s0

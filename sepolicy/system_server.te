@@ -6,3 +6,4 @@ allow system_server sensors_data_file:dir search;
 allow system_server sysfs_graphics:file { getattr open read write };
 allow system_server sysfs_keypad:file { getattr open read write };
 allow system_server time_daemon:unix_stream_socket connectto;
+allow system_server apk_data_file:sock_file { getattr write };

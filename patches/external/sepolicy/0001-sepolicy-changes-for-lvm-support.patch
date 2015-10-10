@@ -39,7 +39,7 @@ index 613ed8f..e643ec4 100644
 +# All domains used for lvm service.
 +attribute lvm_placeholder;
 diff --git a/domain.te b/domain.te
-index bfb5f05..ddb0691 100644
+index bfb5f05..b24decb 100644
 --- a/domain.te
 +++ b/domain.te
 @@ -178,11 +178,11 @@ neverallow { domain -unconfineddomain -recovery } unlabeled:dir_file_class_set c
@@ -56,7 +56,14 @@ index bfb5f05..ddb0691 100644
  
  # No process can map low memory (< CONFIG_LSM_MMAP_MIN_ADDR).
  neverallow domain self:memprotect mmap_zero;
-@@ -238,8 +238,8 @@ neverallow { domain -init -system_server -ueventd -unconfineddomain } hw_random_
+@@ -232,14 +232,14 @@ neverallow domain kernel:security setbool;
+ neverallow { domain -init } kernel:security setsecparam;
+ 
+ # Only init, ueventd and system_server should be able to access HW RNG
+-neverallow { domain -init -system_server -ueventd -unconfineddomain } hw_random_device:chr_file *;
++neverallow { domain -init -system_server -ueventd -unconfineddomain -lvm_placeholder } hw_random_device:chr_file *;
+ 
+ # Ensure that all entrypoint executables are in exec_type.
  neverallow domain { file_type -exec_type }:file entrypoint;
  
  # Ensure that nothing in userspace can access /dev/mem or /dev/kmem

@@ -1,3 +1,4 @@
 type opponvitem_file, file_type;
 type proc_touchpanel, fs_type;
 type sysfs_keypad, sysfs_type, fs_type;
+type modem_block_device, dev_type;
