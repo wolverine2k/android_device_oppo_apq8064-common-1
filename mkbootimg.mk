@@ -18,7 +18,7 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 		$(recovery_kernel) \
 		$(MINIGZIP)
 	@echo -e ${CL_CYN}"----- Deleting useless files in recovery ramdisk ------"${CL_RST}
-	$(hide) rm -rf $(TARGET_RECOVERY_ROOT_OUT)/sbin/static $(TARGET_RECOVERY_ROOT_OUT)/lvm* $(TARGET_RECOVERY_ROOT_OUT)/init.fs*
+	$(hide) rm -rf $(TARGET_RECOVERY_ROOT_OUT)/lvm_* $(TARGET_RECOVERY_ROOT_OUT)/init.fs*
 	@echo -e ${CL_CYN}"----- Making recovery ramdisk ------"${CL_RST}
 	$(hide) rm -f $(recovery_uncompressed_ramdisk)
 	$(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $(recovery_uncompressed_ramdisk)
