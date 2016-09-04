@@ -15,6 +15,7 @@
  */
 
 #include <cstddef>
+#include <stdlib.h>
 
 /* Backwards compatibility for camera HAL */
 extern "C" void _ZN7android10MemoryBaseC1ERKNS_2spINS_11IMemoryHeapEEEij(void*, void*, ssize_t, size_t);
