@@ -46,8 +46,12 @@ TARGET_KERNEL_SOURCE := kernel/oppo/n1
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/oppo/apq8064-common/init/init_find5.cpp
+#TARGET_INIT_VENDOR_LIB := libinit_msm
+#TARGET_LIBINIT_DEFINES_FILE := device/oppo/apq8064-common/init/init_find5.cpp
+
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_find5
+TARGET_RECOVERY_DEVICE_MODULES := libinit_find5
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
