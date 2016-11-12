@@ -43,10 +43,8 @@ on early-init
     #start before the MMC driver comes up and creates the block devices
     wait /dev/block/platform/msm_sdcc.1/by-name/userdata
     wait /dev/block/platform/msm_sdcc.1/by-name/sdcard
-    #Scan for LVM partitions.  Our lvm.conf restricts this to the userdata and sdcard partitions
-    exec /sbin/lvm vgscan --mknodes --ignorelockingfailure
-    #Activate any partitions found
-    exec /sbin/lvm vgchange -aly --ignorelockingfailure
+    start lvm_vgscan
+    start lvm_vgchange
 
 on init
     export LD_PRELOAD "/system/lib/liboppo_symbols.so"
@@ -402,6 +400,19 @@ on property:init.svc.bootanim=stopped
 on property:init.svc.bootanim=running
     # Switch to NOOP while booting
     write /sys/block/mmcblk0/queue/scheduler noop
+
+# LVM services
+# Scan for LVM physical volumes and set up volume groups
+service lvm_vgscan /sbin/lvm vgscan --mknodes --ignorelockingfailure
+    disabled
+    seclabel u:r:lvm:s0
+    oneshot
+
+# Activate LVM logical volumes in found volume groups
+service lvm_vgchange /sbin/lvm vgchange -aly --ignorelockingfailure
+    disabled
+    seclabel u:r:lvm:s0
+    oneshot
 
 service bt-sap /system/bin/sapd 15
     user bluetooth

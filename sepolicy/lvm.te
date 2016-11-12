@@ -1,0 +1,11 @@
+# Lvm
+type lvm, domain;
+domain_trans(init,rootfs,lvm)
+
+allow lvm init:file { read open };
+allow lvm init:dir { search };
+allow lvm proc:file { read open getattr };
+allow lvm self:capability { dac_override };
+allow lvm rootfs:dir { write read add_name remove_name create };
+allow lvm device:dir { read open };
+allow lvm lights_device:chr_file { getattr };
