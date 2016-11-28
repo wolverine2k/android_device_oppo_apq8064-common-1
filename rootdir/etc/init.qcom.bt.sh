@@ -82,4 +82,6 @@ setprop bluetooth.status on
 
 logi "start bluetooth smd transport"
 
+echo 1 > /sys/module/hci_smd/parameters/hcismd_set
+
 exit 0
